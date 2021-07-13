@@ -1,14 +1,11 @@
 <div class="card mb-3" > <!-- style="width: 18rem;" --><!-- *ngFor="let product of items" -->
-    
     <div class="g-0 container" *ngFor="let products of products">
-    
         <div class="col-md-4 image-quantity">
             <img [src]=" products.data.img" class="img-fluid rounded-start" style="width: 8rem" alt="..."> <!-- [src]="product.image" -->
-            
             <div class="quantity">
-                <button class="btn btn-danger" ><i class="fas fa-minus-circle"></i></button> <!-- (click)="minousOne(product)" -->
-                <p class="card-text">1</p>
-                <button class="btn btn-danger"><i class="fas fa-plus-circle"></i></button> <!-- (click)="plusOne(product)" -->  
+                <button class="btn btn-danger" (click)="minus(products.id)"><i class="fas fa-minus"></i></button> <!-- (click)="minousOne(product)" -->
+                <p class="card-text">{{products.cant}}</p>
+                <button class="btn btn-danger" (click)="plus(products.id)"><i class="fas fas fa-plus"></i></button> <!-- (click)="plusOne(product)" -->  
             </div>
         </div>
 
@@ -18,7 +15,7 @@
                 <h6 class="card-subtitle mb-2 text-muted">{{products.data.name}}</h6>
                 <p class="card-text">Precio: S/.{{products.data.precio}}</p> <!-- {{ product.price | currency:'S/.' }} -->
                 <p class="card-text">Precio sugerido:{{products.data.sugerido}}</p>
-                <button class="btn btn-danger" >AGREGAR <i class="fas fa-shopping-cart"></i></button> <!-- (click)="addItemToCar(product)" -->
+                <button class="btn btn-danger" (click)="add(products)">AGREGAR <i class="fas fa-shopping-cart"></i></button> <!-- (click)="addItemToCar(product)" -->
             </div>
         </div>
 

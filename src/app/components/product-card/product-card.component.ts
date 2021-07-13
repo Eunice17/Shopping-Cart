@@ -10,8 +10,8 @@ import { ProductService } from '../../services/product.service';
 })
 export class ProductCardComponent implements OnInit {
   products!: any;
-  orders!: any;
-  cant = 1;
+  orders: [] = [];
+  qty = 1;
 
   constructor(private productService: ProductService) { }
 
@@ -22,22 +22,29 @@ export class ProductCardComponent implements OnInit {
         this.products.push({
           id: prod.payload.doc.id,
           data: prod.payload.doc.data(),
-          qty: this.cant
+          qty: this.qty,
+          status: false
         });
       })
     });
   }
   minus(id: string) {
     const count = this.products.filter((obj: any) => obj.id == id);
-    if (count[0].cant > 1) {
-      this.products.filter((obj: any) => obj.id == id)[0].cant -= 1;
+    if (count[0].qty > 1) {
+      this.products.filter((obj: any) => obj.id == id)[0].qty -= 1;
     }
   }
   plus(id: string) {
-    this.products.filter((obj: any) => obj.id == id)[0].cant += 1;
+    this.products.filter((obj: any) => obj.id == id)[0].qty += 1;
   }
   add(product: Product) {
+    this.products.filter((obj: any) => obj.id == product.id)[0].status = true;
     console.log(product);
+  }
+  delete(product: Product) {
+    this.products.filter((obj: any) => obj.id == product.id)[0].status = false;
+    this.products.filter((obj: any) => obj.id == product.id)[0].qty = 1;
+
   }
 }
 

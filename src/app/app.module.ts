@@ -14,7 +14,7 @@ import { ProductsComponent } from './view/products/products.component';
 import { CartComponent } from './view/cart/cart.component';
 import { LoginComponent } from './view/login/login.component';
 import { ModalComponent } from './components/modal/modal.component';
-import { ClientComponent} from './view/client/client.component'
+import { ClientComponent } from './view/client/client.component'
 import { ClientFormComponent } from './components/client-form/client-form.component';
 import { ClientTableComponent } from './components/client-table/client-table.component';
 import { SaldoDisponibleComponent } from './components/saldo-disponible/saldo-disponible.component';
